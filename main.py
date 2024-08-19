@@ -3,8 +3,8 @@ from PIL import Image
 from utils import get_limits
 import numpy as np
 
-custom_color = [255, 0, 0]
-cap = cv2.VideoCapture(3)
+custom_color = [255, 0, 0] # determine the color range you want to detect, in BGR format
+cap = cv2.VideoCapture(3) # choose your preferable camera, it can be ranged from 0 to some_number
 
 cv2.namedWindow("resize able", cv2.WINDOW_NORMAL)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)  # Set width to 1920 pixels
@@ -36,12 +36,6 @@ while True:
         if cv2.contourArea(contour) > min_area:
             x, y, w, h = cv2.boundingRect(contour)
             cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 5)
-
-
-    # if bbox is not None:
-    #     x1, y1, x2, y2 = bbox
-
-    #     frame = cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 5)
 
     cv2.imshow('resize able', frame)
 
